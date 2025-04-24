@@ -1,1 +1,3 @@
 .github/**
+databases/** */
+*.csv
