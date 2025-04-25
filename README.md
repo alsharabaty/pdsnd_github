@@ -60,5 +60,5 @@ Each CSV file includes fields like:
 us_bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+[Udacity Repo](https://github.com/udacity/pdsnd_github)
 
