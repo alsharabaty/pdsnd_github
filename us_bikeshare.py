@@ -41,7 +41,7 @@ def load_data(city, month, day):
     city['Start Time'] = pd.to_datetime(city['Start Time'])
     city['End Time'] = pd.to_datetime(city['End Time'])
     
-    print(day , month)
+    print(f"Filtaring on : {day}, {month}")
     
     # filter by month to create the new dataframe
     city = mf.month_filtering(city, month)
@@ -49,9 +49,13 @@ def load_data(city, month, day):
     # filter by day of week to create the new dataframe
     city = df.day_filtering(city, day)
     
-    if city.empty:
-            print("Oops! No data found for your filter. Try another month or day.")
-            get_filters()
+    while True:
+        if city.empty:
+                print("Oops! No data found for your filter. Try another month or day.")
+                get_filters()
+        else:
+            print("Data loaded successfully!")
+            break
     
     return city
 
@@ -62,13 +66,10 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # TO DO: display the most common month
     cm.common_month(df)
 
-    # TO DO: display the most common day of week
     cd.common_day(df)
 
-    # TO DO: display the most common start hour
     ch.common_hour(df)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
