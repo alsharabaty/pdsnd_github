@@ -1,8 +1,22 @@
+#  US Bikeshare Data Analysis
+#  This script allows users to explore and analyze bikeshare data from various cities in the US.
+#  The script provides options to filter data by city, month, and day, and displays various statistics about the bikeshare usage.
+#########################################################################
+
+# Import necessary libraries
+
 import time
 import pandas as pd
 from filters import cities as ct, months as mt, days as dy
 from loading_data import month_filtering as mf, day_filtering as df
 from time_stat import common_month as cm, common_day as cd, common_hour as ch
+
+#########################################################################
+
+# filter functions
+# These functions are imported from the filters module
+# and are used to filter the data based on user input.
+# The filters module contains functions to filter the data by city, month, and day.
 
 def get_filters():
     
@@ -24,6 +38,17 @@ def get_filters():
     print('-'* 40)
     return city_dataframe, month_filter, day_filter
 
+##########################################################################
+
+# load_data function
+# This function is used to load the data for the specified city
+# and filter it by month and day if applicable.
+# The function takes the city, month, and day as input parameters
+# and returns a Pandas DataFrame containing the filtered data.
+# The function also handles cases where no data is found for the specified filters
+# and prompts the user to try again with different filters.
+# The function uses the month_filtering and day_filtering functions
+# from the loading_data module to filter the data.
 
 def load_data(city, month, day):
     """
@@ -59,9 +84,22 @@ def load_data(city, month, day):
     
     return city
 
+##########################################################################
+
+# time_stats function
+# This function is used to calculate and display statistics
+# on the most frequent times of travel.
+# The function calculates the most common month, day of the week,
+# and start hour for the filtered data.
+# The function uses the common_month, common_day, and common_hour
+# functions from the time_stat module to calculate the statistics.
 
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
+    """Displays statistics on the most frequent times of travel.
+    Args:
+        (DataFrame) df - Pandas DataFrame containing city data filtered by month and day
+    Returns:
+        None"""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -74,10 +112,24 @@ def time_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+    
+###############################################################################
 
+# station_stats function
+# This function is used to calculate and display statistics
+# on the most popular stations and trip.
+# The function calculates the most commonly used start station,
+# most commonly used end station, and the most frequent combination
+# of start station and end station trip.
+# The function creates a new column 'Start-End' to store the combination
+# of start and end stations for each trip.
 
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
+    """Displays statistics on the most popular stations and trip.
+    Args:
+        (DataFrame) df - Pandas DataFrame containing city data filtered by month and day
+    Returns:
+        None"""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -97,10 +149,21 @@ def station_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+    
+###############################################################################
 
+# trip_duration_stats function
+# This function is used to calculate and display statistics
+# on the total and average trip duration.
+# The function calculates the total travel time and mean travel time
+# for the filtered data.
 
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration."""
+    """Displays statistics on the total and average trip duration.
+    Args:
+        (DataFrame) df - Pandas DataFrame containing city data filtered by month and day
+    Returns:
+        None"""
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -117,10 +180,22 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+    
+###############################################################################
 
+# user_stats function
+# This function is used to calculate and display statistics
+# on bikeshare users.
+# The function calculates the counts of user types,
+# counts of user gender, and the earliest, most recent,
+# and most common year of birth.
 
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
+    """Displays statistics on bikeshare users.
+    Args:
+        (DataFrame) df - Pandas DataFrame containing city data filtered by month and day
+    Returns:
+        None"""
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
@@ -158,9 +233,29 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+    
+###############################################################################
 
+# main function
+# This function is the main entry point of the script.
+# The function prompts the user to select a city, month, and day,
+# loads the data for the selected filters, and displays various statistics.
+# The function also provides an option to view individual trip data
+# and allows the user to restart the analysis with different filters.
+# The function uses the get_filters, load_data, time_stats,
+# station_stats, trip_duration_stats, and user_stats functions
+# to perform the analysis and display the results.
+# The function also handles cases where no data is found for the specified filters
+# and prompts the user to try again with different filters.
+# The function uses the filters module to filter the data by city, month, and day.
+# The function also uses the loading_data module to load the data
+# and filter it by month and day if applicable.
 
 def main():
+    """
+    The main function of the script.
+    It prompts the user to select a city, month, and day,
+    loads the data for the selected filters, and displays various statistics."""
     
     print('Hello! Let\'s explore some US bikeshare data!')
     print('-'*40)
@@ -243,6 +338,9 @@ def main():
             print('-'*40)
             break
 
+#############################################################################
+
+# This is the main entry point of the script.
 
 if __name__ == "__main__":
 	main()

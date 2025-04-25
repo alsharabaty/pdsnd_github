@@ -1,3 +1,6 @@
 .github/**
+<<<<<<< HEAD
 databases/** */
+=======
+>>>>>>> documentation
 *.csv
