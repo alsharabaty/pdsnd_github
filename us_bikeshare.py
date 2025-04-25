@@ -200,7 +200,7 @@ def main():
                                 break
                             else:
                                 print("Please enter a valid response (yes or no).")
-                                view_data = input('Do you wish to continue? Enter yes or no.\n')
+                                view_data = input('Do you wish to continue?\n')
                                 continue
                     if view_data.lower() == 'no':
                         break
@@ -224,20 +224,22 @@ def main():
             user_stats(df)
             print('-'*40)
         elif show_stats.lower() == 'no':
+            print('-'*40)
             print("Okay, no statistics will be shown.")
             print('-'*40)
         else:
+            print('-'*40)
             print("Please enter a valid response (yes or no).")
             show_stats = input('\nWould you like to see the statistics? Enter yes or no.\n')
+            print('-'*40)
             continue
-        # print(df.head())
-        # print(df.info())
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             print('-'*40)
             print("Exiting the program...")
             print("Thank you for using the bikeshare data analysis tool!")
+            print("Goodbye!")
             print('-'*40)
             break
 
